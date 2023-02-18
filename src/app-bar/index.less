@@ -1,0 +1,28 @@
+:root {
+  --app-bar-color: '#fff';
+  --app-bar-title-padding: 0 12px;
+  --app-bar-title-font-size: var(--font-size-lg);
+  --app-bar-text-color: #888;
+  --app-bar-height: 54px;
+  --app-bar-left-gap: 6px;
+  --app-bar-right-gap: 6px;
+  --app-bar-border-radius: 4px;
+  --app-bar-font-size: var(--font-size-lg);
+}
+
+.asap-app-bar {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  font-size: var(--app-bar-font-size);
+  background: var(--app-bar-color);
+  color: var(--app-bar-text-color);
+  transition: background-color 0.25s;
+
+  &--flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+}
