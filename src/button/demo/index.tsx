@@ -1,4 +1,4 @@
-import { AppBar, Button } from 'asap-ui';
+import { AppBar, Button, Icon } from 'asap-ui';
 import React from 'react';
 
 const ButtonDemo = () => {
@@ -55,10 +55,10 @@ const ButtonDemo = () => {
 
       <AppBar title="圆形按钮">
         <Button type="primary" round>
-          10
+          <Icon name="ab-testing" color="red" />
         </Button>
         <Button type="info" round>
-          10
+          <Icon name="abacus" />
         </Button>
       </AppBar>
     </>
