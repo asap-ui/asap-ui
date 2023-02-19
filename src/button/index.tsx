@@ -7,13 +7,16 @@ import { ButtonProps, defaultProps } from './props';
 const Button = forwardRef<any, ButtonProps>((p, ref) => {
   const { n, classes } = createNameSpace('button');
   const props = { ...defaultProps, ...p };
-
   return (
     <button
       ref={ref}
       /* eslint-disable react/button-has-type */
       type={props.nativeType}
       disabled={props.disabled}
+      style={{
+        color: props.textColor,
+        background: props.color,
+      }}
       onClick={props.onClick}
       className={classes(
         n(),
