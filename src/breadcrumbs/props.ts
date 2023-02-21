@@ -1,5 +1,10 @@
 import React from 'react';
 
 export type BreadcrumbsProps = {
-  children: React.ReactNode;
+  separator: string;
+  children?: React.ReactNode;
+};
+
+export const defaultProps: BreadcrumbsProps = {
+  separator: '/',
 };
