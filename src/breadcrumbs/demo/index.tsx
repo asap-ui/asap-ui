@@ -30,10 +30,12 @@ const Demo = () => {
 
       <AppBar title="分隔符插槽">
         <Breadcrumbs>
-          <Breadcrumb>首页</Breadcrumb>
-          <Icon name="ab-testing" color="red" />
-          <Breadcrumb>一级</Breadcrumb>
-          <Icon name="ab-testing" color="red" />
+          <Breadcrumb separator={<Icon name="ab-testing" color="red" />}>
+            首页
+          </Breadcrumb>
+          <Breadcrumb separator={<Icon name="ab-testing" color="red" />}>
+            一级
+          </Breadcrumb>
           <Breadcrumb>二级</Breadcrumb>
         </Breadcrumbs>
       </AppBar>

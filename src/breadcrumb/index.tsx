@@ -12,7 +12,7 @@ const Breadcrumb: FC<BreadcrumbProps> = (props) => {
   return (
     <div className={n()}>
       <div className={n('--active')}>{props.children}</div>
-      <div className={n('separator')}>{value.separator}</div>
+      <div className={n('separator')}>{props.separator ?? value.separator}</div>
     </div>
   );
 };
