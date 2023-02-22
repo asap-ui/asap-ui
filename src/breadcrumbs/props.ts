@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type BreadcrumbsProps = {
-  separator: string;
+  separator?: string;
   children?: React.ReactNode;
 };
 
