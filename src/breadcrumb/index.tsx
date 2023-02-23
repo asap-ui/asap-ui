@@ -1,18 +1,30 @@
 import React, { type FC } from 'react';
 import '../styles/common.less';
 import { createNameSpace } from '../utils/components';
-import { useStatus } from '../utils/hooks';
 import './index.less';
 import { BreadcrumbProps } from './props';
 
 const Breadcrumb: FC<BreadcrumbProps> = (props) => {
-  const [_, value] = useStatus();
   const { classes, n } = createNameSpace('breadcrumb');
-  console.log(value, 111);
+
+  const handleClick: React.MouseEventHandler<HTMLElement> = (e) => {
+    if (props.isLastChild) return;
+    props.onClick?.(e);
+  };
+
   return (
     <div className={n()}>
-      <div className={n('--active')}>{props.children}</div>
-      <div className={n('separator')}>{props.separator ?? value.separator}</div>
+      <div
+        className={classes(n('content'), [!props.isLastChild, n('--active')])}
+        onClick={handleClick}
+      >
+        {props.children}
+      </div>
+      {!props.isLastChild && (
+        <div className={n('separator')}>
+          {props.separator ?? props.preSeparator}
+        </div>
+      )}
     </div>
   );
 };

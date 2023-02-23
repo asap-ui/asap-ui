@@ -39,6 +39,14 @@ const Demo = () => {
           <Breadcrumb>二级</Breadcrumb>
         </Breadcrumbs>
       </AppBar>
+
+      <AppBar title="注册事件">
+        <Breadcrumbs>
+          <Breadcrumb onClick={() => alert(1)}>首页</Breadcrumb>
+          <Breadcrumb onClick={() => alert(2)}>一级</Breadcrumb>
+          <Breadcrumb onClick={() => alert(3)}>二级</Breadcrumb>
+        </Breadcrumbs>
+      </AppBar>
     </>
   );
 };

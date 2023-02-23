@@ -2,6 +2,8 @@ import React from 'react';
 
 export type BreadcrumbProps = {
   separator?: string | React.ReactNode;
-  onClick?: (event: Event) => void;
+  preSeparator?: string | React.ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  isLastChild?: string;
   children: React.ReactNode;
 };
