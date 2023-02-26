@@ -46,14 +46,14 @@
     "path": "@commitlint/cz-commitlint"
   },
   "dependencies": {
-    "@commitlint/cz-commitlint": "^17.4.2",
-    "commitizen": "^4.3.0",
     "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.3",
     "@commitlint/config-conventional": "^17.4.3",
+    "@commitlint/cz-commitlint": "^17.4.2",
     "@umijs/lint": "^4.0.0",
+    "commitizen": "^4.3.0",
     "dumi": "^2.0.2",
     "dumi-theme-mobile": "^2.0.0",
     "eslint": "^8.23.0",

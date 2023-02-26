@@ -1,4 +1,5 @@
 export { default as AppBar } from './app-bar';
+export { default as Avatar } from './avatar';
 export { default as Breadcrumb } from './breadcrumb';
 export { default as Breadcrumbs } from './breadcrumbs';
 export { default as Button } from './button';
