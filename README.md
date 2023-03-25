@@ -7,6 +7,7 @@
 欢迎大家 pr。
 
 组件样式，Api 与 Varlet 保持一致
+
 组件库地址：https://varlet.gitee.io/varlet-ui/#/zh-CN/home
 
 # 贡献流程
@@ -18,7 +19,7 @@ $ yarn global add asap-ui-cli   # 全局安装cli
 ```
 
 ```bash
-  $ asap-ui-cli create <component-name>  # 创建组件
+$ asap-ui-cli create <component-name>  # 创建组件
 ```
 
 ## 1. Fork 项目
