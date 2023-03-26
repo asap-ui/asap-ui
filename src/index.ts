@@ -8,5 +8,6 @@ export { default as Chip } from './chip';
 export { default as Icon } from './icon';
 export { default as Image } from './image';
 export { default as Link } from './link';
+export { default as Loading } from './loading';
 export { default as Ripple } from './ripple';
 export { default as Space } from './space';
