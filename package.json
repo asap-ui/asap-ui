@@ -46,6 +46,7 @@
     "path": "@commitlint/cz-commitlint"
   },
   "dependencies": {
+    "@mdi/font": "^7.2.96",
     "@types/react-dom": "^18.0.11",
     "react-router-dom": "^6.8.1"
   },
