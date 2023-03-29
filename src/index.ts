@@ -10,4 +10,5 @@ export { default as Image } from './image';
 export { default as Link } from './link';
 export { default as Loading } from './loading';
 export { default as Ripple } from './ripple';
+export { Snackbar,AsapSnackbar } from './snackbar';
 export { default as Space } from './space';

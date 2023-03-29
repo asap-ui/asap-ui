@@ -52,7 +52,7 @@ const Space: FC<SpaceProps> = (p) => {
   return (
     <div className={className} style={p.style}>
       {Children.toArray(children).map((Child, index) => (
-        <div key={index} style={getMarginStyle(index === childrenCount - 1)}>
+        <div key={index} style={{...getMarginStyle(index === childrenCount - 1),width:'100%'}}>
           {Child}
         </div>
       ))}

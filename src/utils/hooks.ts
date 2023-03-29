@@ -39,3 +39,12 @@ export const useState = (initState?: any) => {
   }, []);
   return [state, setCurrentState];
 };
+
+
+export const usePrevious = (value:any)=> {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref;
+}
