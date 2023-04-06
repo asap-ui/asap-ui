@@ -40,11 +40,10 @@ export const useState = (initState?: any) => {
   return [state, setCurrentState];
 };
 
-
-export const usePrevious = (value:any)=> {
-  const ref = useRef();
+export const usePrevious = <T>(preValue: T) => {
+  const ref = useRef<T>();
   useEffect(() => {
-    ref.current = value;
-  });
+    ref.current = preValue;
+  }, [preValue]);
   return ref;
-}
+};
