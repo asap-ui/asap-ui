@@ -5,7 +5,7 @@ import { useLock } from 'asap-ui/utils/lock';
 import { useZIndex } from 'asap-ui/utils/zIndex';
 import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Transition } from 'react-transition-group';
+import { Transition } from 'asap-ui/transition';
 import { SNACKBAR_TYPE } from '.';
 import { defaultProps, SnackbarProps, SnackbarType } from './props';
 
@@ -19,21 +19,10 @@ const ICON_TYPE_DICT: Record<SnackbarType, string> = {
   loading: '',
 };
 
-const defaultStyle: CSSProperties = {
-  opacity: 0,
-  transform: 'translateY(-30px)',
-};
-
-const transitionStyles: any = {
-  entering: { opacity: 1, transform: 'translateY(0)' },
-  entered: { opacity: 1, transform: 'translateY(0)' },
-  exited: { opacity: 1, transform: 'translateY(-30px)' },
-};
-
 const Snackbar: FC<SnackbarProps> = (props) => {
   const nodeRef = useRef(null);
   const [display, setDisplay] = useState(false);
-  const [lock,setLock] = useState(props.lockScroll)
+  const [lock, setLock] = useState(props.lockScroll);
   const zIndex = useZIndex(props.show, 1);
   const iconName = props.type ? ICON_TYPE_DICT[props.type] : null;
 
@@ -49,8 +38,8 @@ const Snackbar: FC<SnackbarProps> = (props) => {
         setDisplay(false);
         clearTimeout(timer);
       }, props.duration);
-    }else{
-      setLock(false)
+    } else {
+      setLock(false);
     }
     setDisplay(props.show!);
 
@@ -61,8 +50,7 @@ const Snackbar: FC<SnackbarProps> = (props) => {
 
   return (
     <Transition
-      nodeRef={nodeRef}
-      classNames={n('fade')}
+      name={n('fade')}
       timeout={props.timeout!}
       in={display}
       unmountOnExit
@@ -71,55 +59,51 @@ const Snackbar: FC<SnackbarProps> = (props) => {
       onExiting={props.onClose}
       onExited={props.onClosed}
     >
-      {(state) => (
+      <div
+        ref={nodeRef}
+        className={classes(n(), [
+          (props.callType === 'function' &&
+            props.style?.position === 'absolute') ||
+            props.callType !== 'function',
+          n('transition'),
+        ])}
+        style={{
+          pointerEvents:
+            props.type === 'loading' || props.forbidClick ? 'auto' : 'none',
+          zIndex,
+          ...props.style,
+        }}
+      >
         <div
-          ref={nodeRef}
-          className={classes(n(), [
-            (props.callType === 'function' &&
-              props.style?.position === 'absolute') ||
-              props.callType !== 'function',
-            n('transition'),
-          ])}
-          style={{
-            pointerEvents:
-              props.type === 'loading' || props.forbidClick ? 'auto' : 'none',
-            zIndex,
-            ...defaultStyle,
-            ...transitionStyles[state],
-            ...props.style,
-          }}
+          className={classes(
+            n('wrapper'),
+            n(`wrapper-${props.position}`),
+            n('$-elevation--4'),
+            [props.vertical, n('vertical')],
+            [
+              props.type && SNACKBAR_TYPE.includes(props.type),
+              n(`wrapper-${props.type}`),
+            ],
+          )}
+          style={{ zIndex }}
         >
-          <div
-            className={classes(
-              n('wrapper'),
-              n(`wrapper-${props.position}`),
-              n('$-elevation--4'),
-              [props.vertical, n('vertical')],
-              [
-                props.type && SNACKBAR_TYPE.includes(props.type),
-                n(`wrapper-${props.type}`),
-              ],
+          <div className={classes(n('content'), props.contentClass)}>
+            {props.content}
+          </div>
+          <div className={n('action')}>
+            {iconName && <Icon name={iconName} />}
+            {props.type === 'loading' && (
+              <Loading
+                type={props.loadingType}
+                size={props.loadingSize}
+                color={props.loadingColor}
+                radius={props.loadingRadius}
+              />
             )}
-            style={{ zIndex }}
-          >
-            <div className={classes(n('content'), props.contentClass)}>
-              {props.content}
-            </div>
-            <div className={n('action')}>
-              {iconName && <Icon name={iconName} />}
-              {props.type === 'loading' && (
-                <Loading
-                  type={props.loadingType}
-                  size={props.loadingSize}
-                  color={props.loadingColor}
-                  radius={props.loadingRadius}
-                />
-              )}
-              {props.action}
-            </div>
+            {props.action}
           </div>
         </div>
-      )}
+      </div>
     </Transition>
   );
 };

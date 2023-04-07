@@ -1,7 +1,7 @@
 import { isPlainObject, isString } from 'asap-ui/utils/shared';
 import React, { createRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { TransitionGroup } from 'react-transition-group';
+import { TransitionGroup } from 'asap-ui/transition';
 import { createNameSpace } from '../utils/components';
 import SnackbarCore from './core';
 import {

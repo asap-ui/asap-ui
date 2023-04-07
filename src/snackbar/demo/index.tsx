@@ -138,7 +138,7 @@ function createSnackbar(type: SnackbarType) {
   if (type === 'loading') {
     setTimeout(() => {
       Snackbar.success('加载成功');
-    }, 2000);
+    }, 3000);
   }
 }
 
@@ -146,7 +146,9 @@ function openMultiple() {
   Snackbar.allowMultiple(true);
 
   const snackbar1 = Snackbar('Snackbar 1');
-  Snackbar.success('Snackbar 2');
+  Snackbar.success({
+    content:'Snackbar 2',
+  });
 
   setTimeout(() => {
     snackbar1.clear();
