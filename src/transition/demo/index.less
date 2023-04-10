@@ -1,0 +1,41 @@
+.fade {
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  transition: all linear 0.3s;
+}
+.fade-exited,
+.fade-exiting {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.fade-entering,
+.fade-erntered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.list-box{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .list-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:200px;
+    height: 40px;
+    background-color: #fc2d2d;
+    color:#fff;
+    +.list-item{
+      margin-top: 10px;
+    }
+  }
+}

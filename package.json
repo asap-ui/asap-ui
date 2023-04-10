@@ -48,9 +48,7 @@
   "dependencies": {
     "@mdi/font": "^7.2.96",
     "@types/react-dom": "^18.0.11",
-    "@types/react-transition-group": "^4.4.5",
-    "react-router-dom": "^6.8.1",
-    "react-transition-group": "^4.4.5"
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.3",
