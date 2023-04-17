@@ -1,0 +1,65 @@
+:root {
+  --input-input-height: 24px;
+  --input-textarea-height: auto;
+}
+
+.asap-input {
+  &__autocomplete {
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-size: 0;
+  }
+
+  &__input {
+    width: 100%;
+    height: var(--input-input-height);
+    padding: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: var(--field-decorator-text-color);
+    caret-color: var(--field-decorator-focus-color);
+    transition: color 0.25s;
+    font: inherit;
+
+    &::placeholder {
+      color: var(--input-placeholder-color);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 8px;
+    font: inherit;
+    line-height: var(--input-input-height);
+    color: var(--field-decorator-text-color);
+    transition: color 0.25s;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &--textarea {
+    height: var(--input-textarea-height);
+    min-height: var(--input-input-height);
+  }
+
+  &--disabled {
+    color: var(--field-decorator-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &--error {
+    color: var(--field-decorator-error-color);
+  }
+
+  &--caret-error {
+    caret-color: var(--field-decorator-error-color);
+  }
+}
