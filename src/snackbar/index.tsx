@@ -1,7 +1,7 @@
+import { TransitionGroup } from 'asap-ui/transition';
 import { isPlainObject, isString } from 'asap-ui/utils/shared';
 import React, { createRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { TransitionGroup } from 'asap-ui/transition';
 import { createNameSpace } from '../utils/components';
 import SnackbarCore from './core';
 import {
@@ -38,7 +38,7 @@ function normalizeOptions(options = {}): SnackbarOptions {
   return isString(options) ? { content: options } : options;
 }
 
-const { n, classes } = createNameSpace('snackbar');
+const { n } = createNameSpace('snackbar');
 
 let seed = 0;
 const genUuid = () => `SNACKBAR_${Date.now()}_${seed++}`;
@@ -105,7 +105,9 @@ class SnackbarContainer extends React.PureComponent<
       if (i === length - 1) {
         this.forceUpdate(() => {
           this.setState({ snackbarList: [] });
-          callback && callback();
+          if (callback) {
+            callback();
+          }
         });
       }
     }
@@ -134,6 +136,7 @@ class SnackbarContainer extends React.PureComponent<
           return (
             <SnackbarCore
               {...options}
+              key={options.key}
               callType="function"
               show={options.show}
               style={{ position: allowMultiple ? 'relative' : 'absolute' }}
@@ -185,16 +188,18 @@ function createSnackbar(): TSnackbar {
   }) as unknown as TSnackbar;
 
   SNACKBAR_TYPE.forEach((type) => {
+    let opts: any;
     Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
       if (isPlainObject(options)) {
-        options.type = type;
+        opts = options;
+        opts.type = type;
       } else {
-        options = {
+        opts = {
           content: options,
           type,
         };
       }
-      return Snackbar(options);
+      return Snackbar(opts);
     };
   });
 

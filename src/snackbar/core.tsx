@@ -1,11 +1,11 @@
 import Icon from 'asap-ui/icon';
 import Loading from 'asap-ui/loading';
+import { Transition } from 'asap-ui/transition';
 import { createNameSpace } from 'asap-ui/utils/components';
 import { useLock } from 'asap-ui/utils/lock';
 import { useZIndex } from 'asap-ui/utils/zIndex';
-import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Transition } from 'asap-ui/transition';
 import { SNACKBAR_TYPE } from '.';
 import { defaultProps, SnackbarProps, SnackbarType } from './props';
 

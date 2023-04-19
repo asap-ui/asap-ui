@@ -36,12 +36,12 @@ export const isEmpty = (val: unknown) =>
 export const toNumber = (
   val: number | string | boolean | undefined | null,
 ): number => {
-  if (val == null) return 0;
+  if (val === null || val === undefined) return 0;
 
   if (isString(val)) {
-    val = parseFloat(val);
-    val = Number.isNaN(val) ? 0 : val;
-    return val;
+    let value = parseFloat(val);
+    value = Number.isNaN(value) ? 0 : value;
+    return value;
   }
 
   if (isBoolean(val)) return Number(val);
