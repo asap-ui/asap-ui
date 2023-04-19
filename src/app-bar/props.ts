@@ -11,4 +11,5 @@ export type AppBarProps = {
     | null
     | undefined;
   title: string;
+  flex?: boolean;
 };
