@@ -11,5 +11,6 @@ export { default as Input } from './input';
 export { default as Link } from './link';
 export { default as Loading } from './loading';
 export { default as Ripple } from './ripple';
+export { default as Skeleton } from './skeleton';
 export { AsapSnackbar, Snackbar } from './snackbar';
 export { default as Space } from './space';
