@@ -64,7 +64,7 @@ export const toPxNum = (value: unknown): number => {
 };
 // e.g. return 1px 1% 1vw 1vh 1rem null var(--color-primary) calc(1px + 1px)
 export const toSizeUnit = (value: unknown) => {
-  if (value == null) {
+  if (value === null || value === undefined) {
     return undefined;
   }
 
@@ -83,7 +83,7 @@ export const toSizeUnit = (value: unknown) => {
 };
 
 export const multiplySizeUnit = (value: unknown, quantity = 1) => {
-  if (value == null) {
+  if (value === null || value === undefined) {
     return undefined;
   }
 

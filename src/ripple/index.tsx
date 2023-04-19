@@ -9,7 +9,7 @@ import {
   RippleStyles,
 } from './props';
 
-const { classes, n } = createNameSpace('ripple');
+const { n } = createNameSpace('ripple');
 
 const ANIMATION_DURATION = 250;
 
@@ -24,8 +24,12 @@ function setStyles(element: RippleHTMLElement) {
   element.style.overflow = 'hidden';
   element.style.overflowX = 'hidden';
   element.style.overflowY = 'hidden';
-  position === 'static' && (element.style.position = 'relative');
-  zIndex === 'auto' && (element.style.zIndex = '1');
+  if (position === 'static') {
+    element.style.position = 'relative';
+  }
+  if (zIndex === 'auto') {
+    element.style.zIndex = '1';
+  }
 }
 
 function computeRippleStyles(
@@ -71,6 +75,7 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
     ripple.style.transform = `translate(${x}px, ${y}px) scale3d(.3, .3, .3)`;
     ripple.style.width = `${size}px`;
     ripple.style.height = `${size}px`;
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     _ripple.color && (ripple.style.backgroundColor = _ripple.color);
     ripple.dataset.createdAt = String(performance.now());
 
