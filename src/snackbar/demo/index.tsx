@@ -147,7 +147,7 @@ function openMultiple() {
 
   const snackbar1 = Snackbar('Snackbar 1');
   Snackbar.success({
-    content:'Snackbar 2',
+    content: 'Snackbar 2',
   });
 
   setTimeout(() => {
@@ -158,8 +158,8 @@ function openMultiple() {
 const SnackbarDemo = () => {
   return (
     <div>
-      <AppBar title="基本使用">
-        <Space direction="vertical" fill style={{ flex: 1 }}>
+      <AppBar title="基本使用" flex={false}>
+        <Space direction="column">
           <BasicUsage />
           <BasicVertical />
           <BasicBottom />
@@ -168,8 +168,8 @@ const SnackbarDemo = () => {
         </Space>
       </AppBar>
 
-      <AppBar title="函数调用">
-        <Space direction="vertical" fill style={{ flex: 1 }}>
+      <AppBar title="函数调用" flex={false}>
+        <Space direction="column">
           <Button type="warning" block onClick={() => FunctionUsage()}>
             基本使用
           </Button>

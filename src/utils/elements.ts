@@ -93,3 +93,7 @@ export const multiplySizeUnit = (value: unknown, quantity = 1) => {
 
   return `${parseFloat(legalSize) * quantity}${unit}`;
 };
+
+export function padStartFlex(style: string | undefined) {
+  return style === 'start' || style === 'end' ? `flex-${style}` : style;
+}
