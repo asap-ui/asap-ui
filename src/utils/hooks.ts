@@ -47,3 +47,29 @@ export const usePrevious = <T>(preValue: T) => {
   }, [preValue]);
   return ref;
 };
+
+/*
+ *  组件更改为hooks的一次尝试
+ *  ui和逻辑不做强制绑定，用户可以自定义ui
+ * */
+export function useRadio(props: {
+  onChange: (val: string) => void;
+  defaultValue: string;
+}) {
+  const { defaultValue, onChange } = props;
+  const [value, setValue] = useState(defaultValue);
+
+  useEffect(() => {
+    onChange?.(value!);
+  }, [value]);
+
+  const handleRadioChange = (val: string) => {
+    setValue(val);
+  };
+
+  return {
+    value,
+    setValue,
+    onChange: handleRadioChange,
+  };
+}
